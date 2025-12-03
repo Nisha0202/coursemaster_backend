@@ -44,25 +44,6 @@ export const login = asyncHandler(async (req: AuthRequest, res: Response) => {
   });
 });
 
-export const adminLogin = asyncHandler(async (req: AuthRequest, res: Response) => {
-  const { email, password, adminSecretKey } = req.body;
-
-  const { user, token } = await authService.adminLogin(email, password, adminSecretKey);
-
-  res.status(200).json({
-    success: true,
-    message: 'Admin login successful',
-    data: {
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-      },
-      token,
-    },
-  });
-});
 
 export const getProfile = asyncHandler(async (req: AuthRequest, res: Response) => {
   const user = await authService.getUserById(req.userId!);

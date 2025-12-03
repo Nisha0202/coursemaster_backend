@@ -11,6 +11,7 @@ import courseRoutes from './routes/courseRoutes';
 import enrollmentRoutes from './routes/enrollmentRoutes';
 import assignmentRoutes from './routes/assignmentRoutes';
 import quizRoutes from './routes/quizRoutes';
+import { createAdmin } from './seed/adminSeeder';
 
 const app: Application = express();
 
@@ -18,6 +19,7 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+createAdmin();
 
 // Routes
 app.use('/api/auth', authRoutes);
